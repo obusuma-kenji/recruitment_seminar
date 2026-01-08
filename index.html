@@ -3,1260 +3,535 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>採り切る技術 - 選考プロセス徹底解説セミナー</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>採り切る技術セミナー</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
+        @page {
+            size: A4 portrait;
+            margin: 0;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        :root {
-            --primary: #1a3a52;
-            --secondary: #2d5f7e;
-            --accent: #d4a574;
-            --accent-bright: #e8b887;
-            --text-dark: #2c2c2c;
-            --text-light: #f5f5f5;
-            --bg-cream: #faf8f5;
-            --bg-gradient: linear-gradient(135deg, #faf8f5 0%, #f0ebe3 100%);
-            --shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
-            --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.15);
-        }
-
         body {
             font-family: 'Noto Sans JP', sans-serif;
-            background: var(--bg-gradient);
-            color: var(--text-dark);
-            line-height: 1.7;
-            overflow-x: hidden;
+            line-height: 1.5;
+            color: #333;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
+        .page {
+            width: 210mm;
+            height: 297mm;
+            page-break-after: always;
             position: relative;
             overflow: hidden;
-            background: linear-gradient(135deg, #1a3a52 0%, #2d5f7e 50%, #3d7199 100%);
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 30%, rgba(212, 165, 116, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(232, 184, 135, 0.1) 0%, transparent 50%);
-            animation: pulse 8s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero-badge {
-            display: inline-block;
-            background: rgba(212, 165, 116, 0.2);
-            border: 1px solid var(--accent);
-            color: var(--accent-bright);
-            padding: 0.5rem 1.5rem;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 2rem;
-            animation: fadeInUp 1s ease-out 0.2s both;
-        }
-
-        .hero h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2.5rem, 7vw, 5rem);
-            font-weight: 700;
-            color: var(--text-light);
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            animation: fadeInUp 1s ease-out 0.4s both;
-        }
-
-        .hero-highlight {
-            color: var(--accent-bright);
-            font-style: italic;
-        }
-
-        .hero p {
-            font-size: clamp(1.1rem, 2vw, 1.4rem);
-            color: rgba(245, 245, 245, 0.9);
-            max-width: 700px;
-            margin-bottom: 3rem;
-            font-weight: 300;
-            animation: fadeInUp 1s ease-out 0.6s both;
-        }
-
-        .hero-date {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 1.5rem 2rem;
-            border-radius: 15px;
-            display: inline-block;
-            margin-bottom: 2rem;
-            animation: fadeInUp 1s ease-out 0.8s both;
-        }
-
-        .hero-date-text {
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: var(--text-light);
-            letter-spacing: 1px;
-        }
-
-        .hero-date-sub {
-            font-size: 0.95rem;
-            color: rgba(245, 245, 245, 0.8);
-            margin-top: 0.3rem;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-bright) 100%);
-            color: var(--primary);
-            padding: 1.2rem 3rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-            text-decoration: none;
-            border-radius: 50px;
-            box-shadow: 0 10px 30px rgba(212, 165, 116, 0.3);
-            transition: all 0.3s ease;
-            animation: fadeInUp 1s ease-out 1s both;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .cta-button:hover::before {
-            left: 100%;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(212, 165, 116, 0.4);
-        }
-
-        /* Problem Section */
-        .problem-section {
-            padding: 8rem 0;
             background: white;
-            position: relative;
+            padding: 10mm;
+            border: 3px solid #1a3a52;
         }
 
-        .section-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 700;
-            color: var(--primary);
-            text-align: center;
-            margin-bottom: 4rem;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 0.8s ease-out forwards;
-        }
-
-        .problem-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-            margin-bottom: 4rem;
-        }
-
-        .problem-card {
-            background: var(--bg-cream);
-            padding: 2.5rem;
-            border-radius: 20px;
-            border-left: 4px solid var(--accent);
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 0.8s ease-out forwards;
-        }
-
-        .problem-card:nth-child(1) { animation-delay: 0.1s; }
-        .problem-card:nth-child(2) { animation-delay: 0.2s; }
-        .problem-card:nth-child(3) { animation-delay: 0.3s; }
-
-        .problem-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .problem-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .problem-card h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .problem-card p {
-            color: #666;
-            line-height: 1.8;
-        }
-
-        /* Benefits Section */
-        .benefits-section {
-            padding: 8rem 0;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .benefits-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(212, 165, 116, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        .benefit-item {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 2rem;
-            border-radius: 15px;
-            transition: all 0.3s ease;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 0.8s ease-out forwards;
-        }
-
-        .benefit-item:nth-child(1) { animation-delay: 0.1s; }
-        .benefit-item:nth-child(2) { animation-delay: 0.2s; }
-
-        .benefit-item:hover {
-            background: rgba(255, 255, 255, 0.08);
-            transform: translateY(-5px);
-        }
-
-        .benefit-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .benefit-item h3 {
-            color: var(--accent-bright);
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 0.8rem;
-        }
-
-        .benefit-item p {
-            color: rgba(245, 245, 245, 0.9);
-            line-height: 1.8;
-        }
-
-        /* Details Section */
-        .details-section {
-            padding: 8rem 0;
-            background: white;
-        }
-
-        .details-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: start;
-        }
-
-        .detail-card {
-            background: var(--bg-cream);
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-            margin-bottom: 2rem;
-            opacity: 0;
-            transform: translateX(-30px);
-            animation: slideInLeft 0.8s ease-out forwards;
-        }
-
-        @keyframes slideInLeft {
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .detail-card:nth-child(1) { animation-delay: 0.1s; }
-        .detail-card:nth-child(2) { animation-delay: 0.2s; }
-        .detail-card:nth-child(3) { animation-delay: 0.3s; }
-        .detail-card:nth-child(4) { animation-delay: 0.4s; }
-
-        .detail-label {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent);
-            font-weight: 600;
-            margin-bottom: 0.8rem;
-        }
-
-        .detail-content {
-            font-size: 1.1rem;
-            color: var(--text-dark);
-            line-height: 1.8;
-        }
-
-        .detail-content strong {
-            color: var(--primary);
-            font-weight: 600;
-        }
-
-        /* Instructor Section */
-        .instructor-card {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            padding: 3rem;
-            border-radius: 20px;
-            color: var(--text-light);
-            box-shadow: var(--shadow-lg);
-            position: sticky;
-            top: 2rem;
-            opacity: 0;
-            transform: translateX(30px);
-            animation: slideInRight 0.8s ease-out 0.2s forwards;
-        }
-
-        @keyframes slideInRight {
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .instructor-card h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--accent-bright);
-            margin-bottom: 1.5rem;
-        }
-
-        .instructor-name {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            border-bottom: 2px solid var(--accent);
-            padding-bottom: 0.5rem;
-            display: inline-block;
-        }
-
-        .instructor-bio {
-            line-height: 1.9;
-            color: rgba(245, 245, 245, 0.95);
-        }
-
-        /* Pricing Section */
-        .pricing-section {
-            padding: 8rem 0;
-            background: var(--bg-gradient);
-            text-align: center;
-        }
-
-        .pricing-card {
-            background: white;
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 3rem;
-            border-radius: 20px;
-            box-shadow: var(--shadow-lg);
-            border-top: 5px solid var(--accent);
-            opacity: 0;
-            transform: scale(0.9);
-            animation: scaleUp 0.8s ease-out forwards;
-        }
-
-        @keyframes scaleUp {
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .price {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 4rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin: 1rem 0;
-        }
-
-        .price-note {
-            color: var(--accent);
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 2rem;
-            padding: 1rem;
-            background: rgba(212, 165, 116, 0.1);
-            border-radius: 10px;
-        }
-
-        .organizer-info {
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid #eee;
-            text-align: left;
-        }
-
-        .organizer-info p {
-            margin: 0.5rem 0;
-            color: #666;
-        }
-
-        .organizer-info strong {
-            color: var(--primary);
-        }
-
-        /* CTA Section */
-        .cta-section {
-            padding: 8rem 0;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(212, 165, 116, 0.15) 0%, transparent 70%);
-            border-radius: 50%;
-            animation: pulse 6s ease-in-out infinite;
-        }
-
-        .cta-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .cta-section h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 700;
-            color: var(--text-light);
-            margin-bottom: 2rem;
-        }
-
-        .cta-section p {
-            font-size: 1.2rem;
-            color: rgba(245, 245, 245, 0.9);
-            max-width: 700px;
-            margin: 0 auto 3rem;
-            line-height: 1.8;
-        }
-
-        .cta-warning {
-            background: rgba(212, 165, 116, 0.2);
-            border: 1px solid var(--accent);
-            padding: 1.5rem;
-            border-radius: 15px;
-            max-width: 600px;
-            margin: 3rem auto;
-            color: var(--accent-bright);
-            font-weight: 500;
-        }
-
-        /* Application Form Section */
-        .form-section {
-            padding: 8rem 0;
-            background: white;
-        }
-
-        .form-intro {
-            text-align: center;
-            color: #666;
-            max-width: 700px;
-            margin: 0 auto 4rem;
-            font-size: 1.05rem;
-            line-height: 1.8;
-        }
-
-        .form-container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: var(--bg-cream);
-            padding: 3rem;
-            border-radius: 20px;
-            box-shadow: var(--shadow-lg);
-        }
-
-        .application-form {
+        /* 表面 */
+        .front-page {
             display: flex;
             flex-direction: column;
-            gap: 2rem;
+            justify-content: space-between;
         }
 
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .form-group label,
-        .group-label {
-            font-weight: 600;
-            color: var(--primary);
-            font-size: 1rem;
-        }
-
-        .required {
-            color: #e74c3c;
-            font-weight: 700;
-        }
-
-        .form-note {
-            color: #666;
-            font-size: 0.85rem;
-            font-style: italic;
-        }
-
-        .form-group input[type="text"],
-        .form-group input[type="email"],
-        .form-group select {
-            padding: 1rem;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            font-size: 1rem;
-            font-family: 'Noto Sans JP', sans-serif;
-            transition: all 0.3s ease;
-            background: white;
-        }
-
-        .form-group input[type="text"]:focus,
-        .form-group input[type="email"]:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(212, 165, 116, 0.1);
-        }
-
-        .form-group select {
-            cursor: pointer;
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%231a3a52' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 1rem center;
-            background-size: 12px;
-            padding-right: 3rem;
-        }
-
-        /* Checkbox Groups */
-        .checkbox-group {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 15px;
-            border: 2px solid #e0e0e0;
-        }
-
-        .checkbox-list {
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-            margin-top: 1rem;
-        }
-
-        .checkbox-label {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            padding: 0.8rem;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .checkbox-label:hover {
-            background: rgba(212, 165, 116, 0.05);
-        }
-
-        .checkbox-label input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
-            accent-color: var(--accent);
-        }
-
-        .checkbox-label span {
-            color: var(--text-dark);
-            font-size: 0.95rem;
-        }
-
-        .other-input {
-            margin-top: 0.5rem;
-            padding: 0.8rem;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            font-family: 'Noto Sans JP', sans-serif;
-            display: none;
-        }
-
-        .other-input.active {
-            display: block;
-        }
-
-        /* Submit Button */
-        .form-submit {
-            margin-top: 2rem;
+        .main-catch {
             text-align: center;
+            margin-bottom: 5mm;
         }
 
-        .submit-button {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: var(--text-light);
-            padding: 1.2rem 4rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 10px 30px rgba(26, 58, 82, 0.3);
-            transition: all 0.3s ease;
-            font-family: 'Noto Sans JP', sans-serif;
+        .main-catch h1 {
+            font-size: 32px;
+            font-weight: 900;
+            color: #1a3a52;
+            line-height: 1.4;
+            margin-bottom: 3mm;
         }
 
-        .submit-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(26, 58, 82, 0.4);
+        .main-catch .highlight {
+            color: #d4a574;
+            font-size: 36px;
         }
 
-        .submit-button:active {
-            transform: translateY(-1px);
+        .main-catch .subtitle-theme {
+            font-size: 18px;
+            font-weight: bold;
+            color: #1a3a52;
+            margin-bottom: 3mm;
+            line-height: 1.5;
         }
 
-        .form-privacy {
-            text-align: center;
+        .main-catch p {
+            font-size: 14px;
             color: #666;
-            font-size: 0.85rem;
-            margin-top: 2rem;
             line-height: 1.6;
         }
 
-        /* Footer */
-        footer {
-            background: var(--text-dark);
-            color: rgba(245, 245, 245, 0.7);
-            padding: 3rem 0;
+        .date-block {
+            background: #f8f8f8;
+            border: 3px solid #1a3a52;
+            padding: 15px;
             text-align: center;
-            font-size: 0.9rem;
+            border-radius: 12px;
+            margin-bottom: 5mm;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .details-grid,
-            .benefits-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .instructor-card {
-                position: static;
-            }
-
-            .problem-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .pricing-card {
-                padding: 2rem;
-            }
-
-            .price {
-                font-size: 3rem;
-            }
-
-            .form-container {
-                padding: 2rem 1.5rem;
-            }
-
-            .submit-button {
-                padding: 1rem 2rem;
-                width: 100%;
-            }
-
-            .cta-section {
-                padding: 4rem 0;
-            }
-
-            .form-section {
-                padding: 4rem 0;
-            }
+        .date-block .date {
+            font-size: 26px;
+            font-weight: bold;
+            color: #1a3a52;
+            margin-bottom: 5px;
         }
 
-        /* Scroll animations */
-        .scroll-reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
+        .date-block .info {
+            font-size: 14px;
+            color: #666;
         }
 
-        .scroll-reveal.revealed {
-            opacity: 1;
-            transform: translateY(0);
+        .features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5mm;
+            margin-bottom: 5mm;
+        }
+
+        .feature {
+            background: white;
+            border: 2px solid #d4a574;
+            padding: 12px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .feature .icon {
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+
+        .feature .title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #1a3a52;
+            margin-bottom: 5px;
+        }
+
+        .feature .desc {
+            font-size: 11px;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        .price-block {
+            background: #fff9f0;
+            border: 3px solid #d4a574;
+            padding: 15px;
+            text-align: center;
+            border-radius: 12px;
+            margin-bottom: 5mm;
+        }
+
+        .price-block .label {
+            font-size: 16px;
+            font-weight: bold;
+            color: #1a3a52;
+            margin-bottom: 5px;
+        }
+
+        .price-block .price {
+            font-size: 36px;
+            font-weight: 900;
+            color: #1a3a52;
+            margin-bottom: 5px;
+        }
+
+        .price-block .note {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .office-info {
+            background: #f8f8f8;
+            border: 2px solid #1a3a52;
+            padding: 12px;
+            border-radius: 10px;
+        }
+
+        .office-info .name {
+            font-size: 16px;
+            font-weight: bold;
+            color: #1a3a52;
+            margin-bottom: 8px;
+            text-align: center;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #d4a574;
+        }
+
+        .office-info .detail {
+            font-size: 11px;
+            color: #666;
+            margin: 3px 0;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .office-info .icon {
+            font-size: 14px;
+            width: 18px;
+        }
+
+        /* 裏面 */
+        .back-page {
+            font-size: 11px;
+        }
+
+        .back-header {
+            background: white;
+            border: 3px solid #1a3a52;
+            padding: 12px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 5mm;
+        }
+
+        .back-header h2 {
+            font-size: 22px;
+            font-weight: bold;
+            color: #1a3a52;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3mm;
+            margin-bottom: 5mm;
+        }
+
+        .info-card {
+            background: white;
+            border-left: 4px solid #d4a574;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .info-card .label {
+            font-size: 9px;
+            color: #d4a574;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .info-card .content {
+            font-size: 12px;
+            color: #333;
+            line-height: 1.4;
+        }
+
+        .info-card .content strong {
+            color: #1a3a52;
+        }
+
+        .instructor-block {
+            background: #f8f8f8;
+            border: 2px solid #1a3a52;
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 5mm;
+        }
+
+        .instructor-block .subtitle {
+            font-size: 12px;
+            color: #d4a574;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .instructor-block .name {
+            font-size: 18px;
+            font-weight: bold;
+            color: #1a3a52;
+            margin-bottom: 8px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #d4a574;
+        }
+
+        .instructor-block .bio {
+            font-size: 10px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #1a3a52;
+            border-left: 5px solid #d4a574;
+            padding-left: 10px;
+            margin-bottom: 3mm;
+        }
+
+        .challenges {
+            background: white;
+            border: 2px solid #e0e0e0;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 5mm;
+        }
+
+        .challenges-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px;
+            font-size: 10px;
+        }
+
+        .challenges-list li {
+            list-style: none;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        .challenges-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #d4a574;
+            font-weight: bold;
+        }
+
+        .benefits {
+            background: #fff9f0;
+            border: 2px solid #d4a574;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 5mm;
+        }
+
+        .benefits .title {
+            font-size: 13px;
+            font-weight: bold;
+            color: #1a3a52;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        .benefits ul {
+            font-size: 10px;
+            padding-left: 15px;
+        }
+
+        .benefits li {
+            margin-bottom: 3px;
+        }
+
+        .qr-apply {
+            background: #fff9f0;
+            border: 2px solid #d4a574;
+            padding: 12px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 5mm;
+        }
+
+        .qr-apply img {
+            width: 80px;
+            height: 80px;
+            border: 2px solid #1a3a52;
+            border-radius: 8px;
+            padding: 3px;
+            background: white;
+        }
+
+        .qr-apply .text {
+            text-align: left;
+        }
+
+        .qr-apply .text .title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #1a3a52;
+            margin-bottom: 3px;
+        }
+
+        .qr-apply .text .desc {
+            font-size: 10px;
+            color: #666;
+        }
+
+        .footer-note {
+            background: #f8f8f8;
+            border: 2px solid #1a3a52;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 9px;
+            line-height: 1.5;
+        }
+
+        .footer-note .warning {
+            background: #fff9f0;
+            border: 2px solid #d4a574;
+            padding: 5px;
+            border-radius: 5px;
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-size: 10px;
+            color: #1a3a52;
+        }
+
+        @media print {
+            body {
+                margin: 0;
+            }
+            .page {
+                margin: 0;
+                border: none;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-badge">Recruitment Strategy Seminar</div>
+    <!-- 表面 -->
+    <div class="page front-page">
+        <div>
+            <div class="main-catch">
                 <h1>
-                    応募が少ないからこそ、<br>
-                    <span class="hero-highlight">採り切る技術</span>が<br>
-                    採用の勝敗を分ける
+                    【ご紹介企業様 限定】<br>
+                    <span class="highlight">中小企業の採用担当者・<br>経営者向けセミナー</span>
                 </h1>
+                <div class="subtitle-theme">
+                    応募が少ない時代の『ピッタリ応募者』が来た時に<br>
+                    採りきる技術（面接編）
+                </div>
                 <p>
-                    限られた応募者を確実に自社に引き込む。<br>
-                    辞退やミスマッチを防ぎ、採用につなげる選考プロセスを徹底解説します。
+                    「応募が少ないから仕方ない」とあきらめていませんか？<br>
+                    限られた応募者を確実に採用につなげる選考プロセスを徹底解説
                 </p>
-                <div class="hero-date">
-                    <div class="hero-date-text">2026年1月21日(水) 10:30-11:45</div>
-                    <div class="hero-date-sub">ZOOM開催 / オンライン参加</div>
-                </div>
-                <a href="#apply" class="cta-button">今すぐ申し込む</a>
             </div>
-        </div>
-    </section>
 
-    <!-- Problem Section -->
-    <section class="problem-section">
-        <div class="container">
-            <h2 class="section-title">こんな課題をお持ちではありませんか？</h2>
-            <div class="problem-grid">
-                <div class="problem-card">
-                    <div class="problem-icon">📉</div>
-                    <h3>応募数の減少</h3>
-                    <p>採用市場で「応募が少ないから仕方ない」とあきらめていませんか？実は、応募が少ないからこそ"採り切る仕組み"を持つ企業が、採用で勝ち組になっています。</p>
-                </div>
-                <div class="problem-card">
-                    <div class="problem-icon">⚠️</div>
-                    <h3>辞退の増加</h3>
-                    <p>せっかくの応募者が面接辞退や内定辞退。限られたチャンスを逃していませんか？</p>
-                </div>
-                <div class="problem-card">
-                    <div class="problem-icon">🔄</div>
-                    <h3>ミスマッチ</h3>
-                    <p>採用してもすぐに離職。選考段階でのミスマッチを防ぐ仕組みはありますか?</p>
-                </div>
+            <div class="date-block">
+                <div class="date">2026年1月21日(水) 10:30-11:45</div>
+                <div class="info">ZOOM開催 / オンライン参加</div>
             </div>
-        </div>
-    </section>
 
-    <!-- Benefits Section -->
-    <section class="benefits-section">
-        <div class="container">
-            <h2 class="section-title" style="color: var(--text-light);">本セミナーで得られること</h2>
-            <div class="benefits-grid">
-                <div class="benefit-item">
-                    <div class="benefit-icon">🎁</div>
-                    <h3>特典1: 厳選資料プレゼント</h3>
-                    <p>アンケート回答者には、採り切る技術選考プロセス(面接編)の一部を抜粋した資料をプレゼント</p>
+            <div class="features">
+                <div class="feature">
+                    <div class="icon">📉</div>
+                    <div class="title">応募数減少の課題</div>
+                    <div class="desc">応募が少ないを言い訳にしない採り切る仕組み</div>
                 </div>
-                <div class="benefit-item">
-                    <div class="benefit-icon">📚</div>
-                    <h3>特典2: 完全版資料</h3>
-                    <p>個別相談に進まれた方には、採り切る技術選考プロセスを全て含んだ抜粋資料をプレゼント</p>
+                <div class="feature">
+                    <div class="icon">⚠️</div>
+                    <div class="title">辞退を防ぐ</div>
+                    <div class="desc">面接・内定辞退を防ぐプロセス構築</div>
+                </div>
+                <div class="feature">
+                    <div class="icon">🎁</div>
+                    <div class="title">特典資料</div>
+                    <div class="desc">アンケート回答者に抜粋資料プレゼント</div>
+                </div>
+                <div class="feature">
+                    <div class="icon">📚</div>
+                    <div class="title">完全版資料</div>
+                    <div class="desc">個別相談進行者に完全版プレゼント</div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- Details Section -->
-    <section class="details-section">
-        <div class="container">
-            <h2 class="section-title">セミナー詳細</h2>
-            <div class="details-grid">
-                <div>
-                    <div class="detail-card">
-                        <div class="detail-label">開催日時</div>
-                        <div class="detail-content">
-                            <strong>2026年1月21日(水曜日)</strong><br>
-                            10:30～11:45<br>
-                            <em>(ZOOM開催)</em>
-                        </div>
-                    </div>
+        <div>
+            <div class="price-block">
+                <div class="label">参加費用</div>
+                <div class="price">¥5,500 <span style="font-size: 18px; font-weight: normal;">(税込)</span></div>
+                <div class="note">★顧問先企業様は¥2,200(税込)★ </div>
+            </div>
 
-                    <div class="detail-card">
-                        <div class="detail-label">対象者</div>
-                        <div class="detail-content">
-                            <strong>経営者または決裁権限者</strong><br>
-                            ※一般社員の方には相応しくない内容も含まれる可能性がございます。<br>
-                            ※中小企業の採用は経営者が判断する経営課題になっています。
-                        </div>
-                    </div>
-
-                    <div class="detail-card">
-                        <div class="detail-label">主催・協賛</div>
-                        <div class="detail-content">
-                            <strong>主催:</strong> 一般社団法人採用定着支援協会<br>
-                            <strong>協賛:</strong> おぶすま社会保険労務士事務所
-                        </div>
-                    </div>
-
-                    <div class="detail-card">
-                        <div class="detail-label">お申込みについて</div>
-                        <div class="detail-content">
-                            定員がございますので、恐れ入りますが先着順で締め切りとさせていただきます。<br>
-                            お申込者には採用定着支援協会より、ご登録いただいたメールに当日のZOOMのURLなどをご案内させて頂きます。
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="instructor-card">
-                        <h3>講師紹介</h3>
-                        <div class="instructor-name">松下智彦</div>
-                        <div class="instructor-bio">
-                            リクルート社やメーカー系人材会社を経て、(一社)採用定着支援協会の代表理事。<br><br>
-                            
-                            常に30社を超える中小企業の採用定着支援を実施しながら、延べ600事業所が加盟した採用定着支援の専門家、採用定着士のチェーン本部の代表。<br><br>
-                            
-                            最新著書、「副業ではじめる採用支援」(メディアジョン)など著書多数
-                        </div>
-                    </div>
-                </div>
+            <div class="office-info">
+                <div class="name">おぶすま社会保険労務士事務所</div>
+                <div class="detail"><span class="icon">📍</span>埼玉県大里郡寄居町富田６５６</div>
+                <div class="detail"><span class="icon">📞</span>０４８－５０１－７８５４</div>
+                <div class="detail"><span class="icon">✉️</span>kenjiarai420125@ozzio.jp</div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Pricing Section -->
-    <section class="pricing-section">
-        <div class="container">
-            <h2 class="section-title">参加費用</h2>
-            <div class="pricing-card">
-                <div class="price">¥5,500<span style="font-size: 1.5rem; color: #666;">(税込)</span></div>
-                <div class="organizer-info">
-                    <p><strong>お支払い・キャンセルについて</strong></p>
-                    <p>詳細はお申し込み後のご案内メールにてご確認ください。</p>
-                </div>
+    <!-- 裏面 -->
+    <div class="page back-page">
+        <div class="back-header">
+            <h2>セミナー詳細情報</h2>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="label">開催日時</div>
+                <div class="content"><strong>2026年1月21日(水)</strong><br>10:30～11:45 (ZOOM開催)</div>
+            </div>
+            <div class="info-card">
+                <div class="label">対象者</div>
+                <div class="content"><strong>経営者または決裁権限者</strong><br>中小企業の採用は経営課題です</div>
+            </div>
+            <div class="info-card">
+                <div class="label">参加費</div>
+                <div class="content"><strong>¥5,500(税込)</strong><br>★顧問先企業様は¥2,200(税込)★</div>
+            </div>
+            <div class="info-card">
+                <div class="label">定員</div>
+                <div class="content"><strong>先着順で締切</strong><br>お早めにお申し込みください</div>
             </div>
         </div>
-    </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section" id="apply">
-        <div class="cta-content">
-            <div class="container">
-                <h2>今こそ、採用戦略を見直す時</h2>
-                <p>
-                    ぜひこの機会に、御社の「これからの採用戦略」の見直しやヒントをお持ち帰りいただければと思います。
-                </p>
-                <div class="cta-warning">
-                    ⚠️ 定員がございますので、恐れ入りますが先着順で締め切りとさせていただきます。<br>
-                    お早めにお申し込みください。
-                </div>
+        <h3 class="section-title">講師紹介</h3>
+        <div class="instructor-block">
+            <div class="subtitle">INSTRUCTOR</div>
+            <div class="name">松下智彦</div>
+            <div class="bio">
+                リクルート社やメーカー系人材会社を経て、(一社)採用定着支援協会の代表理事。常に30社を超える中小企業の採用定着支援を実施しながら、延べ600事業所が加盟した採用定着支援の専門家、採用定着士のチェーン本部の代表。最新著書「副業ではじめる採用支援」(メディアジョン)など著書多数。
             </div>
         </div>
-    </section>
 
-    <!-- Application Form Section -->
-    <section class="form-section">
-        <div class="container">
-            <h2 class="section-title">お申し込みフォーム</h2>
-            <p class="form-intro">
-                以下のフォームに必要事項をご記入の上、お申し込みください。<br>
-                ご登録いただいたメールアドレスに当日のZOOMのURLなどをご案内させていただきますので、正確にご記入ください。
-            </p>
-            
-            <div class="form-container">
-                <form id="applicationForm" class="application-form">
-                    <!-- Email -->
-                    <div class="form-group">
-                        <label for="email">メールアドレス <span class="required">*</span></label>
-                        <input type="email" id="email" name="email" required placeholder="example@company.co.jp">
-                        <small class="form-note">このフォームではメールアドレスが収集されます。</small>
-                    </div>
+        <h3 class="section-title">こんな課題をお持ちの方におすすめ</h3>
+        <div class="challenges">
+            <ul class="challenges-list">
+                <li>応募者数が少ない</li>
+                <li>面接辞退が多い</li>
+                <li>内定辞退が多い</li>
+                <li>早期離職が多い</li>
+                <li>求める人材が来ない</li>
+                <li>選考プロセスが未整備</li>
+                <li>面接スキルに不安</li>
+                <li>採用コストが高い</li>
+            </ul>
+        </div>
 
-                    <!-- Company Name -->
-                    <div class="form-group">
-                        <label for="company">会社名 <span class="required">*</span></label>
-                        <input type="text" id="company" name="company" required placeholder="株式会社〇〇">
-                    </div>
+        <h3 class="section-title">参加特典</h3>
+        <div class="benefits">
+            <div class="title">🎁 2つの特典をご用意</div>
+            <ul>
+                <li><strong>特典1:</strong> アンケート回答者に採り切る技術選考プロセス(面接編)の一部抜粋資料</li>
+                <li><strong>特典2:</strong> 個別相談進行者には完全版抜粋資料をプレゼント</li>
+            </ul>
+        </div>
 
-                    <!-- Position -->
-                    <div class="form-group">
-                        <label for="position">お申込者のお役職 <span class="required">*</span></label>
-                        <input type="text" id="position" name="position" required placeholder="代表取締役、人事部長など">
-                    </div>
-
-                    <!-- Name -->
-                    <div class="form-group">
-                        <label for="name">お申込者＝当日参加者のお名前 <span class="required">*</span></label>
-                        <input type="text" id="name" name="name" required placeholder="山田 太郎">
-                    </div>
-
-                    <!-- Prefecture -->
-                    <div class="form-group">
-                        <label for="prefecture">本社所在地都道府県 <span class="required">*</span></label>
-                        <select id="prefecture" name="prefecture" required>
-                            <option value="">選択してください</option>
-                            <option value="北海道">北海道</option>
-                            <option value="青森県">青森県</option>
-                            <option value="岩手県">岩手県</option>
-                            <option value="宮城県">宮城県</option>
-                            <option value="秋田県">秋田県</option>
-                            <option value="山形県">山形県</option>
-                            <option value="福島県">福島県</option>
-                            <option value="茨城県">茨城県</option>
-                            <option value="栃木県">栃木県</option>
-                            <option value="群馬県">群馬県</option>
-                            <option value="埼玉県">埼玉県</option>
-                            <option value="千葉県">千葉県</option>
-                            <option value="東京都">東京都</option>
-                            <option value="神奈川県">神奈川県</option>
-                            <option value="新潟県">新潟県</option>
-                            <option value="富山県">富山県</option>
-                            <option value="石川県">石川県</option>
-                            <option value="福井県">福井県</option>
-                            <option value="山梨県">山梨県</option>
-                            <option value="長野県">長野県</option>
-                            <option value="岐阜県">岐阜県</option>
-                            <option value="静岡県">静岡県</option>
-                            <option value="愛知県">愛知県</option>
-                            <option value="三重県">三重県</option>
-                            <option value="滋賀県">滋賀県</option>
-                            <option value="京都府">京都府</option>
-                            <option value="大阪府">大阪府</option>
-                            <option value="兵庫県">兵庫県</option>
-                            <option value="奈良県">奈良県</option>
-                            <option value="和歌山県">和歌山県</option>
-                            <option value="鳥取県">鳥取県</option>
-                            <option value="島根県">島根県</option>
-                            <option value="岡山県">岡山県</option>
-                            <option value="広島県">広島県</option>
-                            <option value="山口県">山口県</option>
-                            <option value="徳島県">徳島県</option>
-                            <option value="香川県">香川県</option>
-                            <option value="愛媛県">愛媛県</option>
-                            <option value="高知県">高知県</option>
-                            <option value="福岡県">福岡県</option>
-                            <option value="佐賀県">佐賀県</option>
-                            <option value="長崎県">長崎県</option>
-                            <option value="熊本県">熊本県</option>
-                            <option value="大分県">大分県</option>
-                            <option value="宮崎県">宮崎県</option>
-                            <option value="鹿児島県">鹿児島県</option>
-                            <option value="沖縄県">沖縄県</option>
-                        </select>
-                    </div>
-
-                    <!-- Industry -->
-                    <div class="form-group">
-                        <label for="industry">業種 <span class="required">*</span></label>
-                        <input type="text" id="industry" name="industry" required placeholder="例：製造業、IT・情報通信業、建設業、小売業、飲食業、サービス業など">
-                    </div>
-
-                    <!-- Current Challenges -->
-                    <div class="form-group checkbox-group">
-                        <label class="group-label">現在、貴社が採用に関して困っていること・課題と感じていることをすべてお選びください <span class="required">*</span></label>
-                        <small class="form-note">複数選択可</small>
-                        
-                        <div class="checkbox-list">
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="challenges" value="応募者数が少ない">
-                                <span>応募者数が少ない</span>
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="challenges" value="面接辞退が多い">
-                                <span>面接辞退が多い</span>
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="challenges" value="内定辞退が多い">
-                                <span>内定辞退が多い</span>
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="challenges" value="採用してもすぐに離職する">
-                                <span>採用してもすぐに離職する</span>
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="challenges" value="求める人材が応募してこない">
-                                <span>求める人材が応募してこない</span>
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="challenges" value="選考プロセスが整っていない">
-                                <span>選考プロセスが整っていない</span>
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="challenges" value="面接スキルに不安がある">
-                                <span>面接スキルに不安がある</span>
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="challenges" value="採用コストが高い">
-                                <span>採用コストが高い</span>
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="challenges" value="採用活動に時間が取れない">
-                                <span>採用活動に時間が取れない</span>
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="challenges" value="その他" id="challenges-other-checkbox">
-                                <span>その他</span>
-                            </label>
-                            <input type="text" id="challenges-other" name="challenges_other" placeholder="その他の課題をご記入ください" class="other-input">
-                        </div>
-                    </div>
-
-                    <!-- Priority Challenges -->
-                    <div class="form-group checkbox-group">
-                        <label class="group-label">上記の中で、特に解決したい・改善したいとお考えのことは何ですか？ <span class="required">*</span></label>
-                        <small class="form-note">複数選択可</small>
-                        
-                        <div class="checkbox-list">
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="priorities" value="応募者数が少ない">
-                                <span>応募者数が少ない</span>
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="priorities" value="面接辞退が多い">
-                                <span>面接辞退が多い</span>
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="priorities" value="内定辞退が多い">
-                                <span>内定辞退が多い</span>
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="priorities" value="採用してもすぐに離職する">
-                                <span>採用してもすぐに離職する</span>
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="priorities" value="求める人材が応募してこない">
-                                <span>求める人材が応募してこない</span>
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="priorities" value="選考プロセスが整っていない">
-                                <span>選考プロセスが整っていない</span>
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="priorities" value="面接スキルに不安がある">
-                                <span>面接スキルに不安がある</span>
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="priorities" value="採用コストが高い">
-                                <span>採用コストが高い</span>
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="priorities" value="採用活動に時間が取れない">
-                                <span>採用活動に時間が取れない</span>
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="priorities" value="その他" id="priorities-other-checkbox">
-                                <span>その他</span>
-                            </label>
-                            <input type="text" id="priorities-other" name="priorities_other" placeholder="その他の優先事項をご記入ください" class="other-input">
-                        </div>
-                    </div>
-
-                    <!-- Submit Button -->
-                    <div class="form-submit">
-                        <button type="submit" class="submit-button">お申し込みを送信する</button>
-                    </div>
-
-                    <p class="form-privacy">
-                        ご登録いただいた情報は、採用定着支援協会および当事業所にて参加状況の把握のために使用させていただきます。
-                    </p>
-                </form>
+        <h3 class="section-title">お申し込み方法</h3>
+        <div class="qr-apply">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAcIAAAHCAQAAAABUY/ToAAAECUlEQVR4nO2dQW6sSAyGPw9IvQTpHaCPAjeYI0W5GRwlBxgJlpEK/bOoMhSdt3oalDCyF6204FNTkuWyf7uIiT+z+a8/BCHIIIMM8oVcrdgI2Li2wNrmv8x6/C9r8Tvb73vaIH8k2UiSBGuLJoC5B2AzadmMuQdJCQZJ0vKdTxvkzyRLaOk+zeyZsLFL6P2ZsHF9KPsVOUCVeHXPdQZ5Obm2MHyUYGQjjZj7zexNn2bWX/KbQd6ebOsvnWB+JgwMsRqa/16A9ZeYx//qN4P8f5FIi+dDwwIMSpT0qEtIC2jaU6aSDzXSdK91BnktueViC2gE60O5OBs+HrKRRva2eME2m/mudr91BnkN2eYdrFhCc98gVtDcY4KUL2l+JmpB8l7rDPI6klKp0whopKnzXY0uwbCApi7lr5ryh2IvC/IwaWnEsDRF98lOgztXTo+WpopA4UNBnk1SiS8Me2KdLyyuLFLFJhULHwrSrXhEJ3n55S4FwLA0uRqj7HSplGnhQ0EWc31obZMNS28MUyODh2D9lQw2YzY8nV5bbNB3PW2QP5GstqxDJCqJ9bHJLX7zhCtKEYeCPJG5KZ9b9l3Ce2NtcZ/cc10oKVO+5Y7rDPI6MseX92eiaIxezNvoRb/ZU7KR0sa/5zqDvIL0vgZQFfj5wvLlvmoAJPayIN1KPrQcWVCpwdgHi1wf2mXIqMuCrK2Eliw07qU+jbdgl7LT+S3uV+FDQbp5Pz6VpGiikUuJ3tfIhRhFrI44FOTZPPCQ+xpUo7Fe4PuFvXMWPhRkbcdeVmXN2ZE8+pQRI2+ahT4U5BeyEbCVcx1mD0n6NObnp+XRIes3s5HNNHXyyv9+6wzyGrLquR6dsxyWJvaY40mRD4BETh1kZVV7fjiXZABeq6Xqg8iHgnwlG/kRoM2g+7RyGKjb+xrrQ35G8aE4Xxbk2VxFZJ/z8JlFHWMf54nG0KmD/Era2El67yEfdtVHi41s5mfOHmLuXad+j7PSQdZW8pxdp546VS2NYwDkmFCLOBTk2bzecjm6FGJFWTzmh16cK3woyN2qhuqeD9XK4mt6tGsA91pnkNeRJwXoOMPhX9mdy/Xs6JcF+WrH2aASbrxVdjRji7KY73eXCh8K0k2VLUCVTi/1ALVPqO1DRPdaZ5CXktV70Oo5RqCRvSnlfpnee7ARvI1/u3UGeRF5eu/HPo3G4U1V++zIsyOnDvKVLO9BWx863puXX4aW+x9sZm/LZuX1jN/8tEH+ZHIzBqX86k5Nawv49CJz3/hQSOjUQdb2qg8BJ3lR9THpmKcO8jf28h60Y36oXJVOk/gxPxTkq7WQM56zdQnNY5Ng7RF8GnT/tAKwPF10r3UGeR1p8b8WggwyyG8m/wVueunZHQIIqQAAAABJRU5ErkJggg==" alt="QRコード">
+            <div class="text">
+                <div class="title">QRコードで簡単申し込み</div>
+                <div class="desc">スマートフォンで読み取ってお申し込みください</div>
             </div>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 一般社団法人採用定着支援協会. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script>
-        // Scroll reveal animation
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('revealed');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.scroll-reveal').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Form handling
-        const form = document.getElementById('applicationForm');
-
-        // Show/hide "other" input fields
-        const challengesOtherCheckbox = document.getElementById('challenges-other-checkbox');
-        const challengesOtherInput = document.getElementById('challenges-other');
-        const prioritiesOtherCheckbox = document.getElementById('priorities-other-checkbox');
-        const prioritiesOtherInput = document.getElementById('priorities-other');
-
-        challengesOtherCheckbox?.addEventListener('change', function() {
-            if (this.checked) {
-                challengesOtherInput.classList.add('active');
-                challengesOtherInput.focus();
-            } else {
-                challengesOtherInput.classList.remove('active');
-                challengesOtherInput.value = '';
-            }
-        });
-
-        prioritiesOtherCheckbox?.addEventListener('change', function() {
-            if (this.checked) {
-                prioritiesOtherInput.classList.add('active');
-                prioritiesOtherInput.focus();
-            } else {
-                prioritiesOtherInput.classList.remove('active');
-                prioritiesOtherInput.value = '';
-            }
-        });
-
-        // Form validation and submission
-        form?.addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            // Validate checkboxes
-            const challengesChecked = document.querySelectorAll('input[name="challenges"]:checked');
-            const prioritiesChecked = document.querySelectorAll('input[name="priorities"]:checked');
-
-            if (challengesChecked.length === 0) {
-                alert('「現在、貴社が採用に関して困っていること」を最低1つ選択してください。');
-                return;
-            }
-
-            if (prioritiesChecked.length === 0) {
-                alert('「特に解決したい・改善したいこと」を最低1つ選択してください。');
-                return;
-            }
-
-            // Collect form data
-            const formData = new FormData(form);
-            const data = {
-                email: formData.get('email'),
-                company: formData.get('company'),
-                position: formData.get('position'),
-                name: formData.get('name'),
-                prefecture: formData.get('prefecture'),
-                industry: formData.get('industry'),
-                challenges: [],
-                challenges_other: formData.get('challenges_other'),
-                priorities: [],
-                priorities_other: formData.get('priorities_other')
-            };
-
-            // Collect all checked challenges
-            challengesChecked.forEach(checkbox => {
-                data.challenges.push(checkbox.value);
-            });
-
-            // Collect all checked priorities
-            prioritiesChecked.forEach(checkbox => {
-                data.priorities.push(checkbox.value);
-            });
-
-            // Here you would typically send the data to your server
-            console.log('Form data:', data);
-            
-            // Show success message
-            alert('お申し込みありがとうございます！\n\nご登録いただいたメールアドレスに、セミナーの詳細とZOOMのURLをお送りいたします。\n\nメールが届かない場合は、迷惑メールフォルダをご確認いただくか、お問い合わせください。');
-            
-            // Reset form (in production, you'd do this after successful server response)
-            // form.reset();
-            // challengesOtherInput.classList.remove('active');
-            // prioritiesOtherInput.classList.remove('active');
-        });
-    </script>
-</body>
-</html>
+        <div class="footer-note">
+            <div class="warning">⚠️ 定員制・先着順 │ お早めのお申し込みをおすすめします</div>
+            <div>お申込者には採用定着支援協会より、ご登録メールに当日のZOOM URLをご案内いたします。当事業所も参加状況を把握させていただきます。</div>
+            <div style="margin-top: 5px;"><strong>主催:</strong> 一般社団法人採用定着支援協会 │
